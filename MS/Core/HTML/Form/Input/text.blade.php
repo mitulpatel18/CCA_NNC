@@ -13,10 +13,13 @@ $class="col-lg-6";
 }
 
 
-
+$attr='';
+$req="<i class='fa fa-toggle-off text-danger' aria-hidden='true'></i>";
 if(array_key_exists('data', $data)){
 		
 		if(array_key_exists('input-size', $data['data']))$class= $data['data']['input-size'];
+
+		if(array_key_exists('required', $data['data'])){$attr.= 'required';$req="<i class='fa fa-toggle-on text-success' aria-hidden='true'></i>";}
 
 }
 
@@ -64,26 +67,34 @@ if(array_key_exists('data', $data)){
 	?>
 
 
-@if(isset($dlist))
+		@if(isset($dlist))
 
-<datalist id="{{$data['name']}}List">
-	@foreach($dlist as $value=>$key)
- <option value="{{$value}}"> {{$key}}</option>
+		<datalist id="{{$data['name']}}List">
+			@foreach($dlist as $value=>$key)
+		 <option value="{{$value}}"> {{$key}}</option>
 
-	@endforeach
+			@endforeach
 
-	
-	</datalist>
+			
+			</datalist>
 
-@endif
+		@endif
+
+
+	@elseif(array_key_exists('search',$data))	
+
+		<datalist id="{{$data['name']}}List" class="ms-live-data-load" ms-live-link="{{ route('MSCDN.search.Task.get.Data')}}">
+
+		</datalist>
+
 	@endif
 
 
 
 
 
-{{ Form::label($data['name'], $data['vName'],['class'=>'control-label']) }}
-    
+<?php echo $req;?>  {{ Form::label($data['name'], $data['vName'],['class'=>'control-label']) }}
+   
 @if(array_key_exists('editLock',$data))
 
 
@@ -91,7 +102,15 @@ if(array_key_exists('data', $data)){
 
 
  <fieldset disabled> 
- {{ Form::text($data['name'],$data['value'],['class'=>'form-control','tabindex'=>$index,'readonly','placeholder'=>'Enter '.$data['vName']] ) }}
+
+ 					 @if($attr!='')
+						{{ Form::text($data['name'],$data['value'],['class'=>'form-control','tabindex'=>$index,'readonly','required','placeholder'=>'Enter '.$data['vName']] ) }}
+					 @else
+						{{ Form::text($data['name'],$data['value'],['class'=>'form-control','tabindex'=>$index,'readonly','placeholder'=>'Enter '.$data['vName']] ) }}
+					 @endif
+
+
+ 
  <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
  </fieldset>
 
@@ -109,12 +128,13 @@ if(array_key_exists('data', $data)){
 
 
 
-      {{ Form::text($data['name'], $data['value'],['class'=>'form-control','list'=>$data['name'].'List','tabindex'=>$index,'placeholder'=>'Enter '.$data['lable'], 
-    
-    ]
-     ) }}
-
+     	@if($attr!='')
+			{{ Form::text($data['name'], $data['value'],['class'=>'form-control','list'=>$data['name'].'List','tabindex'=>$index,'placeholder'=>'Enter '.$data['lable'],'required', ]) }}
+		@else
+			{{ Form::text($data['name'], $data['value'],['class'=>'form-control','list'=>$data['name'].'List','tabindex'=>$index,'placeholder'=>'Enter '.$data['lable'], ]) }}
+	    @endif
 
 @endif	
 
 </div>
+

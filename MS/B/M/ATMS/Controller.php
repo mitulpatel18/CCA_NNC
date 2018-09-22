@@ -1,6 +1,6 @@
 <?php
 namespace B\ATMS;
-
+use Illuminate\Http\Request;
 class Controller extends \App\Http\Controllers\Controller
 {
 	public function __construct(){
@@ -566,11 +566,12 @@ class Controller extends \App\Http\Controllers\Controller
 						
 						$queryNo=key($data['stepData']['DocumentQueryArray'][$key]);
 
-						//dd($queryNo  );
+						//dd($data['stepData']['DocumentArray'][$docArray2['FileName']]  );
 						unset($data['stepData']['DocumentArray'][$docArray2['FileName']]);
 						
 						$data['stepData']['DocumentQueryArray'][$docArray2['UniqId']][$queryNo]['Replay']=(string)current($input['SelectedFilesQuery']) [ $oldData[ "UniqId"]] ['query'];
-						
+						$data['stepData']['DocumentQueryArray'][$docArray2['UniqId']][$queryNo]['QueryStatus']=true;
+							//'DateOfDocument'
 
 							$d1=[
 							"path" => $newPath,
@@ -583,6 +584,43 @@ class Controller extends \App\Http\Controllers\Controller
 						    ];
 
 
+
+
+						    if(array_key_exists($oldData[ "UniqId"], $input['date']))
+						    {
+
+
+						    	 if($input['date'][$oldData[ "UniqId"]] != $oldData[ "DateOfDocument"] ){
+
+						    	$d1["DateOfDocument"]=$input['date'][$oldData[ "UniqId"]];
+						    }
+
+
+						    }
+						   	
+
+					
+					if(array_key_exists('documentNo', $input)){
+										
+											    if(array_key_exists($oldData[ "UniqId"], $input['documentNo'])){
+					
+											    		 if($input['documentNo'][$oldData[ "UniqId"]] != $oldData[ "NoOfDocument"] ){
+					
+														    	$d1["NoOfDocument"]=$input['documentNo'][$oldData[ "UniqId"]];
+														    }
+					
+											    }
+											   
+					
+											      if(array_key_exists($oldData[ "UniqId"], $input['documentAmount'])){
+					
+											    	 if($input['documentAmount'][$oldData[ "UniqId"]] != $oldData[ "AmountOfDocument"] ){
+					
+											    	$d1["AmountOfDocument"]=$input['documentAmount'][$oldData[ "UniqId"]];
+											    	}
+												}
+					}
+
 						  
 							 $data['stepData']['DocumentArray'][ explode('.', $docArray2['FileName'])[0].'.'.$value->getClientOriginalExtension() ]=$d1;
 							 $data['stepData']['DocumentReply']=true;
@@ -590,12 +628,13 @@ class Controller extends \App\Http\Controllers\Controller
 
 							 // dd(current($input['SelectedFilesQuery']));
 							// dd($queryNo);
-							 $data['stepData']['DocumentReplyArray'][$replyNo]=[
+							 $data['stepData']['DocumentReplyArray'][ $d1['UniqId'] ]=[
 
-									'Replay'=> (string)current($input['SelectedFilesQuery']) [ $oldData[ "UniqId"]] ['query'],
+									'Replay'=> (string)current($input['SelectedFilesQuery']) [ $oldData[ "UniqId"] ] ['query'],
 									'ApprovedBy'=>null,
-									'ReplayStatus'=>0,
-									//'ReplyDocumentArray'=>$selectedFile
+									'ReplayStatus'=>0,	
+									'ReplayDocumentArray'=>$d1
+									
 
 							
 
@@ -603,7 +642,7 @@ class Controller extends \App\Http\Controllers\Controller
 
 							// dd($data );
 							 
-							  $data['stepData']['DocumentReplyArray'][$replyNo][$d1['UniqId']]=$d1;
+							  //$data['stepData']['DocumentReplyArray'][$replyNo]['ReplayDocumentArray'][$d1['UniqId']]=$d1;
 
 
 	 
@@ -680,4 +719,7 @@ class Controller extends \App\Http\Controllers\Controller
 
 
 	}
+
+
+	
 }

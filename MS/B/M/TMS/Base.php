@@ -131,6 +131,14 @@ public static $routes=[
 
 
 						[
+						'name'=>'TMS.Task.Rise.Step.Query.Action.Post',
+						'route'=>'/task/query/action/batch/{TaskId}',
+						'method'=>'riseQueryActionPost',
+						'type'=>'post',
+						],
+
+
+						[
 						'name'=>'TMS.Task.Rise.Step.Query.View',
 						'route'=>'/task/query/view/{TaskId}/{StepId}/',
 						'method'=>'riseQueryView',
@@ -143,6 +151,14 @@ public static $routes=[
 						'name'=>'TMS.Task.Rise.Step.Query.Rejected.Id',
 						'route'=>'/task/query/reject/{TaskId}/{StepId}/',
 						'method'=>'riseQueryReject',
+						'type'=>'get',
+						],
+
+
+						[
+						'name'=>'TMS.Task.Search.Page',
+						'route'=>'/task/search',
+						'method'=>'searchTask',
 						'type'=>'get',
 						],
 
@@ -175,39 +191,47 @@ public static $field=[
 ['name'=>'UniqId','type'=>'string','input'=>'auto','callback'=>'genUniqID','data'=>['input-size'=>'col-lg-2']],
 
 
-['name'=>'HireAgencyCode','vName'=>'Agency Code','type'=>'string','input'=>'text','link'=>'AMS:0','data'=>['input-size'=>'col-lg-2']  ],
+['name'=>'HireAgencyCode','vName'=>'Agency Code','type'=>'string','input'=>'text','link'=>'AMS:0','data'=>['input-size'=>'col-lg-2','required'=>'required']  ],
 
 
-['name'=>'NameOperator','vName'=>'Name of Operator','type'=>'string','input'=>'text', 'link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-4']],
+['name'=>'NameOperator','vName'=>'Piracy Network','type'=>'string','input'=>'text', 'link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-4','required'=>'required']],
 
-['name'=>'NameOwner','vName'=>'Name of Owner/Partner','type'=>'string','input'=>'text', 'link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-4']],
+['name'=>'NameOwner','vName'=>'Name of Owner/Partner','type'=>'string','input'=>'text', 'link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-4','required'=>'required']],
 
-['name'=>'NameOperatorAddress1','vName'=>'Address of Operator Line 1','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-4']],
+['name'=>'NameOperatorAddress1','vName'=>'Address of Operator Line 1','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-4','required'=>'required']],
 
 ['name'=>'NameOperatorAddress2','vName'=>'Address of Operator Line 2','type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-4'] ],
 
 ['name'=>'NameOperatorAddress3','vName'=>'Address of Operator Line 3','type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-4'] ],
 
-['name'=>'NameOperatorCity','vName'=>"City located Operator's Headqurter",'type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-3']  ],
+['name'=>'NameOperatorCity','vName'=>"City located Operator's Headqurter",'type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-3','required'=>'required']  ],
 
-['name'=>'NameOperatorDistrict','vName'=>'District of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
+['name'=>'NameOperatorDistrict','vName'=>'District of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
 
-['name'=>'NameOperatorState','vName'=>'State of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
+['name'=>'NameOperatorState','vName'=>'State of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
 
-['name'=>'NameOperatorPincode','vName'=>'Pincode of Operator','type'=>'string','input'=>'number', 'data'=>['input-size'=>'col-lg-3']],
-
-
-['name'=>'AreaPiracy','vName'=>'Area of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
-
-['name'=>'ModePiracy','vName'=>'Mode of Piracy','type'=>'string','input'=>'text','link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-3'] ],
-
-['name'=>'IllegalTypeBroadcasting','vName'=>'Illegal broadcasting','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
+['name'=>'NameOperatorPincode','vName'=>'Pincode of Operator','type'=>'string','input'=>'number', 'data'=>['input-size'=>'col-lg-3','required'=>'required']],
 
 
-['name'=>'StatusOperator','vName'=>'Status of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
+['name'=>'NameAreaPiracyCity','vName'=>"City/Town of Piracy",'type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-3','required'=>'required']  ],
+
+['name'=>'NameAreaPiracyDistrict','vName'=>'District of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+['name'=>'NameAreaPiracyState','vName'=>'State of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+['name'=>'NameAreaPiracyPincode','vName'=>'Pincode of Piracy','type'=>'string','input'=>'number', 'data'=>['input-size'=>'col-lg-3','required'=>'required']],
 
 
-['name'=>'NameOfNetwork','vName'=>'Name of Network/LCO','type'=>'string','input'=>'text','link'=>'TMS:0'  ],
+
+['name'=>'ModePiracy','vName'=>'Mode of Piracy','type'=>'string','input'=>'text','link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+['name'=>'IllegalTypeBroadcasting','vName'=>'Illegal broadcasting','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+
+['name'=>'StatusOperator','vName'=>'Status of Operator','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+
+['name'=>'NameOfNetwork','vName'=>'Name of Network/LCO','type'=>'string','input'=>'text','link'=>'TMS:0','data'=>['required'=>'required']  ],
 
 ['name'=>'Status','type'=>'boolean','input'=>'radio','value'=>'status','default'=>'status'],
 
@@ -458,7 +482,16 @@ public static $field7=[
 ['name'=>'NameOperatorPincode','vName'=>'Pincode of Operator','type'=>'string','input'=>'number', 'data'=>['input-size'=>'col-lg-3']],
 
 
-['name'=>'AreaPiracy','vName'=>'Area of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3'] ],
+
+['name'=>'NameAreaPiracyCity','vName'=>"City/Town of Piracy",'type'=>'string','input'=>'text','data'=>['input-size'=>'col-lg-3','required'=>'required']  ],
+
+['name'=>'NameAreaPiracyDistrict','vName'=>'District of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+['name'=>'NameAreaPiracyState','vName'=>'State of Piracy','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-3','required'=>'required'] ],
+
+['name'=>'NameAreaPiracyPincode','vName'=>'Pincode of Piracy','type'=>'string','input'=>'number', 'data'=>['input-size'=>'col-lg-3','required'=>'required']],
+
+
 
 ['name'=>'ModePiracy','vName'=>'Mode of Piracy','type'=>'string','input'=>'text','link'=>'TMS:0' ,'data'=>['input-size'=>'col-lg-3'] ],
 
@@ -502,7 +535,7 @@ public static $field7=[
 
 public static function status(){
 	return [
-	'Open','Close'
+	'Open','Close',
 	];
 }
 

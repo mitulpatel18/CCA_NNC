@@ -14,11 +14,12 @@ $class="col-lg-6";
 
 }
 
-
+$req="<i class='fa fa-toggle-off text-danger' aria-hidden='true'></i>";
 
 if(array_key_exists('data', $data)){
 		
 		if(array_key_exists('input-size', $data['data']))$class= $data['data']['input-size'];
+		if(array_key_exists('required', $data['data'])){$req="<i class='fa fa-toggle-on text-success' aria-hidden='true'></i>";}
 
 }
 
@@ -31,7 +32,7 @@ if(array_key_exists('data', $data)){
 
 
 <div class="form-group {{ $class }}" >
-
+<?php echo $req;?> 
 
 {{ Form::label($data['name'], $data['vName'],['class'=>'control-label']) }}
 

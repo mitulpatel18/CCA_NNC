@@ -10,6 +10,7 @@ if(array_key_exists('ClassData',$data)){
 
 if(array_key_exists('form-class-div',$data['ClassData']))$class=$data['ClassData']['form-class-div'];
 
+
 }else{
 $class="col-lg-6";
 

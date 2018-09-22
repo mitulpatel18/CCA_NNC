@@ -201,29 +201,14 @@ public static $field1=[
 
 //basic details 
 
-['name'=>'Name','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-11']  ],
+['name'=>'Name','type'=>'string','input'=>'text', 'data'=>['input-size'=>'col-lg-11' ,'required'=>'required']  ],
 ['name'=>'AddressLine1','vName'=>'Address Line 1','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-4'] ],
 ['name'=>'AddressLine2','vName'=>'Address Line 2','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-4'] ],
 ['name'=>'AddressLine3','vName'=>'Address Line 3','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-4'] ],
 ['name'=>'Landmark','vName'=>'Landmark','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-2'] ],
-['name'=>'City','vName'=>'City','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-2'] ],
-['name'=>'State','vName'=>'State','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-2'] ],
-['name'=>'Pincode','vName'=>'Pincode','type'=>'string','input'=>'number',  'data'=>['input-size'=>'col-lg-2'] ],
-
-
-//Login Credetial
-	
- // ['name'=>'Username','type'=>'string','input'=>'text',  ],
- // ['name'=>'Password','type'=>'string','input'=>'password',  ],
- //  ['name'=>'Email','type'=>'string','input'=>'enail',  ],
- //  ['name'=>'ConfirmPassword','type'=>'string','input'=>'password',  ],
-
-//Working details
-
- // ['name'=>'AllocatedJobs','type'=>'string','input'=>'text',  ],
- 
-
-
+['name'=>'City','vName'=>'City','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-2',] ],
+['name'=>'State','vName'=>'State','type'=>'string','input'=>'text',  'data'=>['input-size'=>'col-lg-2',] ],
+['name'=>'Pincode','vName'=>'Pincode','type'=>'string','input'=>'number',  'data'=>['input-size'=>'col-lg-2',] ],
 
 
 
@@ -247,9 +232,9 @@ public static $tableStatus2=false;
 public static $field2=[
  
 
-['name'=>'AttName','vName'=>'Name','type'=>'string','input'=>'text',  ],
-['name'=>'AttConatctNo','vName'=>'Contact No.','type'=>'string','input'=>'number',  ],
-['name'=>'AttEmail','vName'=>'Email','type'=>'string','input'=>'email',  ],
+['name'=>'AttName','vName'=>'Name','type'=>'string','input'=>'text', 'data'=>['required'=>'required'] ],
+['name'=>'AttConatctNo','vName'=>'Contact No.','type'=>'string','input'=>'number','data'=>['required'=>'required']  ],
+['name'=>'AttEmail','vName'=>'Email','type'=>'string','input'=>'email','data'=>['required'=>'required']  ],
 
 ];
 
@@ -272,10 +257,10 @@ public static $tableStatus3=false;
 public static $field3=[
  
 
- ['name'=>'Username','type'=>'string','input'=>'text',  ],
- ['name'=>'Password','type'=>'string','input'=>'password',  ],
-  ['name'=>'Email','type'=>'string','input'=>'enail',  ],
-  ['name'=>'ConfirmPassword','type'=>'string','input'=>'password',  ],
+ ['name'=>'Username','type'=>'string','input'=>'text',  'data'=>['required'=>'required']],
+ ['name'=>'Password','type'=>'string','input'=>'password',  'data'=>['required'=>'required']],
+  ['name'=>'Email','type'=>'string','input'=>'enail',  'data'=>['required'=>'required']],
+  ['name'=>'ConfirmPassword','type'=>'string','input'=>'password',  'data'=>['required'=>'required']],
 
 ];
 

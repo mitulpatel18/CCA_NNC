@@ -67,3 +67,6 @@ Route::prefix('AMS')->group(function () { \MS\Core\Helper\Comman::loadRoute('AMS
 Route::prefix('TMS')->group(function () { \MS\Core\Helper\Comman::loadRoute('TMS'); });
 //Route::prefix('ATMS')->group(function () { \MS\Core\Helper\Comman::loadRoute('ATMS'); });
 Route::prefix('NMS')->group(function () { \MS\Core\Helper\Comman::loadRoute('NMS'); });
+Route::prefix('IM')->group(function () { \MS\Core\Helper\Comman::loadRoute('IM'); });
+Route::prefix('MSCDN')->group(function () { \MS\Core\Helper\Comman::loadRoute('MSCDN'); });
+Route::prefix('ANMS')->group(function () { \MS\Core\Helper\Comman::loadRoute('ANMS'); });

@@ -154,7 +154,7 @@ if (array_key_exists('sortBy',(array) $data['List-extraData'])) {
   $sortBy=$data['List-extraData']['sortBy'];
 }
 
-//dd( $data);
+//dd(  (array) $data['List-extraData']);
 
 
  ?>
@@ -241,27 +241,26 @@ if(session('user.SuperAdmin') && !(session('user.AgencyAdmin')!=null || session(
 
 
  <td class="text-right">{{$loop->iteration}}</td>
-  <?php // dd($headingKey);?>
+ 
     @foreach($headingKey as $key)
 
      <td>
 
       @if((string)$object->$key ===  '0')
 
+
       @if($key == "CurrentStatus")
 
-         @if(in_array($key, $data['List-dynamic-column']))
+
+          @if(in_array($key, $data['List-dynamic-column']))
 
 
 
 
           <?php
 
-
-         // dd($data); 
-
-
           $class="\\".$data['Module-Namespace']."\\Logics";
+          
           $func="get".$key;
 
           ?>
@@ -277,6 +276,7 @@ if(session('user.SuperAdmin') && !(session('user.AgencyAdmin')!=null || session(
 
 
       @else
+
        <i class="fa fa-times text-danger"></i>
       @endif
 
@@ -289,7 +289,10 @@ if(session('user.SuperAdmin') && !(session('user.AgencyAdmin')!=null || session(
 
       @else
 
-      @if(count($data['List-dynamic-column']) > 0)
+
+
+   @if(count($data['List-dynamic-column']) > 0)
+
 
           
           @if(in_array($key, $data['List-dynamic-column']))
@@ -297,28 +300,34 @@ if(session('user.SuperAdmin') && !(session('user.AgencyAdmin')!=null || session(
 
 
 
-          <?php
+            <?php
 
 
-         // dd($data); 
+  
 
 
-          $class="\\".$data['Module-Namespace']."\\Logics";
-          $func="get".$key;
+            $class="\\".$data['Module-Namespace']."\\Logics";
 
-          ?>
+            $func="get".$key;
+          //  dd($func);
 
-          {{ $class::$func($object->$key) }}
+            ?>
+
+            {{ $class::$func($object->$key) }}
+          
           @else
 
-          {{ $object->$key }} 
+            
+            {{ $object->$key }} 
           @endif
 
 
        @else
 
+
         {{ $object->$key }} 
        @endif
+
 
       @endif
 

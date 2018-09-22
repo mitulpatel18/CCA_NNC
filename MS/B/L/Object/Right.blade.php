@@ -34,13 +34,9 @@
 
 </a>
 
-
-
-
-
 </li>
 
-  <li class="ms-border dropdown ms-notification-btn {{ $btnColor }}"  ms-live-link="{{ route('NMS.Notification.By.User',['UserId'=>\MS\Core\Helper\Comman::en4url(session('user.userData.UniqId'))]) }}"   > 
+  <li class="ms-border dropdown ms-notification-btn {{ $btnColor }}" ms-channel="ncc-admin-development"  ms-live-link="{{ route('NMS.Notification.By.User',['UserId'=>\MS\Core\Helper\Comman::en4url(session('user.userData.UniqId'))]) }}"   > 
 <a href="" class="dropdown-toggle" id="notificationLable" role="presentation" data-toggle="dropdown"  aria-haspopup="true">
 <i class="fa fa-caret-down" aria-hidden="true"></i>
 </a>

@@ -10,7 +10,10 @@ require('./bootstrap');
 
 Pusher.logToConsole = true;
 
-Echo.channel('ncc')
+var pChannel=$('.ms-notification-btn').attr('ms-channel');
+
+
+Echo.channel(pChannel)
     .listen('.newMessage', (e) => {
 
         checkNewNotification ();
@@ -806,25 +809,15 @@ var link= $('.ms-form').attr('action');
                 },
                 // Ajax events
                 success: completeHandler = function(data) {
-                 // alert("Your action taken succefully.!");
-                 
-                // console.log("msg" in data);
-                //console.log(data);
-              //data=$.parseJSON(data);
-              //console.log(data);
+                
 
 
                 console.log(data);
-                $a =1;
-                if($a==0){
-
-
-
 
                   if("redirect" in data){
                     
                      //localStorage.LastPage = data.redirect;
-                    location.replace(data.redirect);
+                    location.replace(data.redirect);  
                    
                   //  console.log(data->redirect);
                 }else{
@@ -833,18 +826,13 @@ var link= $('.ms-form').attr('action');
 
                         getMsModLink(data.redirectData);
 
-                      }else{
-                        //location.reload();
                       }
                     
                 }
 
 
-                }
-
                 
-               // alert(data.redirect);
-                  location.replace(data.redirect);
+                //  location.replace(data.redirect);
                 },
                 error: errorHandler = function(xhr,status, error) {
                

@@ -13,18 +13,18 @@ class Controller extends \App\Http\Controllers\Controller
 //\MS\Core\Helper\Comman::DB_flush();
 
 	//	dd(session()->all());
-	// 	Base::migrate(
+		Base::migrate(
 
-	// [	
-	// 			['id'=>'7'],
-	// 			//['id'=>'2'],
-	// 			//['id'=>'3'],
-	// 			//['id'=>'4'],
+	[	
+				['id'=>'7'],
+				//['id'=>'2'],
+				//['id'=>'3'],
+				//['id'=>'4'],
 
-	// ]
+	]
 
 
-		//	);
+			);
 
 	
 			$data=[
@@ -98,6 +98,7 @@ class Controller extends \App\Http\Controllers\Controller
 			\MS\Core\Helper\Comman::DB_flush();
 
 			$input=$r->input();
+			//dd($input);
 			$model=new Model(0);
 			if(array_key_exists('UniqId', $input)){
 
@@ -235,6 +236,23 @@ class Controller extends \App\Http\Controllers\Controller
 											\MS\Core\Helper\Comman::en4url($uniqid)])
 				);
 
+			\B\ANMS\Logics::newNotification(
+
+				session('user.userData.UniqId'),
+				1,
+				$c4n,
+				111,				
+				' no.'.$uniqid,
+				route('ANMS.Notification.By.Id',
+				
+				['UniqId'=>
+											\MS\Core\Helper\Comman::en4url($c4n)]),
+					route('ATMS.Task.View.Id',
+				
+				['UniqId'=>
+											\MS\Core\Helper\Comman::en4url($uniqid)])
+				);
+
 
 
 
@@ -307,16 +325,13 @@ public function taskView(){
 
 				'HireAgencyCode'=>'Name of Assined Agency',
 
-
-				//'NewsDate'=>'Date',
-
 				'NameOperator'=>'Name of Operator',
 
 				'IllegalTypeBroadcasting'=>'Type Broacasting',
 				
 
 				'ModePiracy'=>'Mode of Piracy',
-				'NameOfNetwork'=>'LCO name',
+				'NameOfNetwork'=>'LCO/MCO name',
 
 				'CurrentStatus'=>'Cur. Status',
 
@@ -604,7 +619,7 @@ public function taskApproveById($UniqId,$StepId){
 				\MS\Core\Helper\Comman::DB_flush();
 				return $this->taskViewById(\MS\Core\Helper\Comman::en4url($UniqId));
 	
-		 return response()->json($array, $status);
+	//	 return response()->json($array, $status);
 	
 
 
@@ -1189,5 +1204,60 @@ foreach ($updateArray as $key2 => $value2) {
 
 
 
+	}
+
+
+	public function riseQueryActionPost(\Illuminate\Http\Request $r, $TaskId){
+
+		$data['TaskId']=\MS\Core\Helper\Comman::de4url($TaskId);
+		$input=$r->all();
+		//dd($r->all());
+
+		$action=[];
+		foreach ($input['SelectedFiles'] as $stepId => $fileArray) {
+					
+					\MS\Core\Helper\Comman::DB_flush();
+					$m1=new \B\TMS\Model(1,$data['TaskId']);
+
+					dd($m1->where('UniqId',$stepId)->first()->toArray());
+
+				foreach ($fileArray as $fileId => $fileAction) {
+				
+
+					//$lvl1=
+					
+					//dd($fileAction);
+					switch ($fileAction) {
+						case '2':
+						//$action[$taskId][$fileId]=$fileAction;
+							break;
+
+						case '1':
+								$action[$fileAction][$taskId][$fileId]=$fileAction;
+							break;
+						case '0':
+								$action[$fileAction][$taskId][$fileId]=$fileAction;
+							break;
+
+						default:
+							# code...
+							break;
+					}
+				}
+			//dd($fileId);
+
+
+
+		}
+
+
+
+	}
+
+
+	public function searchTask(){
+
+			$data=[];
+			return view('TMS.V.Object.TaskSearch')->with('data',$data);
 	}
 }

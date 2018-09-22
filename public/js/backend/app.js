@@ -766,7 +766,9 @@ __webpack_require__(9);
 
 Pusher.logToConsole = true;
 
-Echo.channel('ncc').listen('.newMessage', function (e) {
+var pChannel = $('.ms-notification-btn').attr('ms-channel');
+
+Echo.channel(pChannel).listen('.newMessage', function (e) {
 
   checkNewNotification();
 });
@@ -1359,37 +1361,24 @@ $("form").on("click", ".ms-form-btn", function () {
     },
     // Ajax events
     success: completeHandler = function completeHandler(data) {
-      // alert("Your action taken succefully.!");
-
-      // console.log("msg" in data);
-      //console.log(data);
-      //data=$.parseJSON(data);
-      //console.log(data);
-
 
       console.log(data);
-      $a = 1;
-      if ($a == 0) {
 
-        if ("redirect" in data) {
+      if ("redirect" in data) {
 
-          //localStorage.LastPage = data.redirect;
-          location.replace(data.redirect);
+        //localStorage.LastPage = data.redirect;
+        location.replace(data.redirect);
 
-          //  console.log(data->redirect);
-        } else {
+        //  console.log(data->redirect);
+      } else {
 
-          if ("redirectData" in data) {
+        if ("redirectData" in data) {
 
-            getMsModLink(data.redirectData);
-          } else {
-            //location.reload();
-          }
+          getMsModLink(data.redirectData);
         }
       }
 
-      // alert(data.redirect);
-      location.replace(data.redirect);
+      //  location.replace(data.redirect);
     },
     error: errorHandler = function errorHandler(xhr, status, error) {
 

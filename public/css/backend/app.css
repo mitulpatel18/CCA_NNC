@@ -3373,16 +3373,16 @@ output {
 }
 
 .form-control::-moz-placeholder {
-  color: #E0E0E0;
+  color: #42a5f5;
   opacity: 1;
 }
 
 .form-control:-ms-input-placeholder {
-  color: #E0E0E0;
+  color: #42a5f5;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #E0E0E0;
+  color: #42a5f5;
 }
 
 .form-control::-ms-expand {
@@ -4348,29 +4348,29 @@ fieldset[disabled] .btn-warning.focus {
 
 .btn-danger {
   color: #fff;
-  background-color: #BF360C;
-  border-color: #a72f0a;
+  background-color: #ef5350;
+  border-color: #ed3c39;
 }
 
 .btn-danger:focus,
 .btn-danger.focus {
   color: #fff;
-  background-color: #8f2809;
-  border-color: #2f0d03;
+  background-color: #eb2521;
+  border-color: #98110e;
 }
 
 .btn-danger:hover {
   color: #fff;
-  background-color: #8f2809;
-  border-color: #6d1f07;
+  background-color: #eb2521;
+  border-color: #d51713;
 }
 
 .btn-danger:active,
 .btn-danger.active,
 .open > .btn-danger.dropdown-toggle {
   color: #fff;
-  background-color: #8f2809;
-  border-color: #6d1f07;
+  background-color: #eb2521;
+  border-color: #d51713;
 }
 
 .btn-danger:active:hover,
@@ -4383,8 +4383,8 @@ fieldset[disabled] .btn-warning.focus {
 .open > .btn-danger.dropdown-toggle:focus,
 .open > .btn-danger.dropdown-toggle.focus {
   color: #fff;
-  background-color: #6d1f07;
-  border-color: #2f0d03;
+  background-color: #d51713;
+  border-color: #98110e;
 }
 
 .btn-danger:active,
@@ -4402,12 +4402,12 @@ fieldset[disabled] .btn-warning.focus {
 fieldset[disabled] .btn-danger:hover,
 fieldset[disabled] .btn-danger:focus,
 fieldset[disabled] .btn-danger.focus {
-  background-color: #BF360C;
-  border-color: #a72f0a;
+  background-color: #ef5350;
+  border-color: #ed3c39;
 }
 
 .btn-danger .badge {
-  color: #BF360C;
+  color: #ef5350;
   background-color: #fff;
 }
 
@@ -6193,12 +6193,12 @@ a.label:focus {
 }
 
 .label-danger {
-  background-color: #BF360C;
+  background-color: #ef5350;
 }
 
 .label-danger[href]:hover,
 .label-danger[href]:focus {
-  background-color: #8f2809;
+  background-color: #eb2521;
 }
 
 .badge {
@@ -6517,7 +6517,7 @@ a.thumbnail.active {
 }
 
 .progress-bar-danger {
-  background-color: #BF360C;
+  background-color: #ef5350;
 }
 
 .progress-striped .progress-bar-danger {

@@ -12,7 +12,7 @@ $tableId=3;
 
 		
 	//dd();
-			$model=$model->paginate(10);
+			$model=$model->orderBy('created_at','desc')->paginate(10);
 			\MS\Core\Helper\Comman::DB_flush();
 
 			//dd($model->toArray());
@@ -21,7 +21,7 @@ $tableId=3;
 						$diplayArray=[
 				//'UniqId'=>'ID',
 
-				'TextOfNotification'=>'Name of Assined Agency',
+				'TextOfNotification'=>'Title ',
 				'created_at'=>'Date & Time'
 
 
@@ -40,7 +40,10 @@ $tableId=3;
 		];
 
 
-		$data=['sortyBy'=>'created_at','sortType'=>'l2o'];
+		$data=[
+		'sortBy'=>'created_at',
+		//'sortType'=>'l2o'
+		];
 
 
 

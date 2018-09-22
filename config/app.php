@@ -182,6 +182,7 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        RenatoMarinho\LaravelPageSpeed\ServiceProvider::class
 
     ],
 
@@ -237,6 +238,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Carbon' => Carbon\Carbon::class,
+
 
     ],
 

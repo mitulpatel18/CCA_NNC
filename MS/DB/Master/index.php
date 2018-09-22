@@ -165,7 +165,7 @@ $lang = array(
 	"not_dir" => "The directory you specified to scan for databases does not exist or is not a directory.",
 	"bad_php_directive" => "It appears that the PHP directive, 'register_globals' is enabled. This is bad. You need to disable it before continuing.",
 	"page_gen" => "Page generated in %s seconds.",
-	"powered" => "Powered by",
+	"powered" => "Developed & Managed by",
 	"remember" => "Remember me",
 	"no_db" => "Welcome to %s. It appears that you have selected to scan a directory for databases to manage. However, %s could not find any valid SQLite databases. You may use the form below to create your first database.",
 	"no_db2" => "The directory you specified does not contain any existing databases to manage, and the directory is not writable. This means you can't create any new databases using %s. Either make the directory writable or manually upload databases to the directory.",
@@ -857,7 +857,7 @@ header('Content-Type: text/html; charset=utf-8');
 <!-- Copyright <?php echo date("Y").' '.PROJECT.' ('.PROJECT_URL.')'; ?> -->
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 <link rel="shortcut icon" href="?resource=favicon" />
-<title><?php echo PROJECT ?></title>
+<title> MS-DB Panel </title>
 
 
 <?php
@@ -932,7 +932,7 @@ if(ini_get("register_globals") == "on" || ini_get("register_globals")=="1") //ch
 if(!$auth->isAuthorized()) //user is not authorized - display the login screen
 {
 	echo "<div id='loginBox'>";
-	echo "<h1><span id='logo'><img style='max-height:45px;'' src='/img/logo-color hd.png'></img></span> <span id='version'>v".PROJECT."</span></h1>";
+	echo "<h1><span id='logo'><br><img style='max-height:45px;'' src='/img/logo-color hd.png'></img></span><br> <code style='font-size:15px;' id=''>".VERSION."</code></h1>";
 	echo "<div style='padding:15px; text-align:center;'>";
 	if ($auth->isFailedLogin())
 		echo "<span class='warning'>".$lang['passwd_incorrect']."</span><br/><br/>";
@@ -946,8 +946,8 @@ if(!$auth->isAuthorized()) //user is not authorized - display the login screen
 	echo "</div>";
 	echo "<br/>";
 	echo "<div style='text-align:center;'>";
-	echo "<span style='font-size:11px;' class='panel'> <a href='".PROJECT_URL."' target='_blank' style='font-size:11px;'><img style='max-height:25px;'' src='/img/powerby.png'></img>".PROJECT."</a> | "; 
-	printf($lang['page_gen'], $pageTimer);
+	echo "<span style='font-size:11px;' class='panel'>Developed & Managed <br>by<br> <a href='".PROJECT_URL."' target='_blank' style='font-size:11px;'><img style='max-height:25px;'' src='/img/powerby.png'></img>".PROJECT."</a>"; 
+	//printf($lang['page_gen'], $pageTimer);
 	echo "</span></div>";
 }
 else //user is authorized - display the main application
@@ -3905,8 +3905,8 @@ else //user is authorized - display the main application
 	}
 
 	echo "<br/>";
-	echo "<span style='font-size:11px; '>".$lang['powered']." <a href='".PROJECT_URL."' target='_blank' style='font-size:11px;'><img style='max-height:20px;'' src='img/powerby.png'></img>".PROJECT."</a> | ";
-	printf($lang['page_gen'], $pageTimer);
+	echo "<span style='font-size:11px;float:right;padding-right:3px; '>".$lang['powered']." <a href='".PROJECT_URL."' target='_blank' style='font-size:11px;'><img style='max-height:20px;'' src='img/powerby.png'></img>".PROJECT."</a>";
+	//printf($lang['page_gen'], $pageTimer);
 	echo "</span>";
 	echo "</td></tr></table>";
 	$db->close(); //close the database

@@ -7,7 +7,7 @@ if(array_key_exists('ClassData',$data)){
 
 
 
-if(array_key_exists('form-class-div',$data['ClassData']))$class=$data['ClassData']['form-class-div'];
+if(array_key_exists('form-class-div',(array)$data['ClassData']))$class=$data['ClassData']['form-class-div'];
 }else{
 $class="col-lg-6";
 
@@ -22,7 +22,7 @@ if(array_key_exists('data', $data)){
 }
 ?>
 <div class="form-group {{$class}}">
-{{ Form::label($data['lable'], $data['name']) }} 
+{{ Form::label($data['name'],$data['lable']) }} 
 
 <div class="radio">
 <?php //	dd($data); ?>
@@ -33,15 +33,20 @@ if(array_key_exists('data', $data)){
 @foreach($data['dataArray'] as $value=>$lable)
 <label tabindex="{{$index}}" class="form-conrtol">
 
+
 	@if ($value == $data['value'])
-	{{Form::radio($data['name'], $value,true,['id'=>$data['name'].$loop->iteration])}}
-    {{$lable}}
-	
+		@if(array_key_exists('value',$data))
+		{{Form::radio($data['name'], $value,true,['id'=>$data['name'].$loop->iteration])}}
+		@else
+		{{Form::radio($data['name'], $value,null,['id'=>$data['name'].$loop->iteration])}}
+		@endif
 	@else
+
+
     {{Form::radio($data['name'], $value,null,['id'=>$data['name'].$loop->iteration])}}
-    {{$lable}}
+   
 	@endif
-	
+	 {{$lable}}
   	
   </label>
 @endforeach

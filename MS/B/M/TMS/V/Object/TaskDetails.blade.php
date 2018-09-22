@@ -10,7 +10,7 @@
                       $userRole=0;
                       }
 
-                      //dd($data);
+                     
                       ?>
                     
                         <div class="panel-heading text-capitalize"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Task No. {{  $data['task']['UniqId'] }}
@@ -83,7 +83,7 @@
 							<tr>
 								
 								<th>Area of Piracy</th>
-								<td>: {{$data['task']['AreaPiracy']}}</td>
+								<td>: to be added area of priarcy </td>
 
               
 							</tr>   
@@ -198,8 +198,8 @@
                   
                   
                   <td>
-<a href="{{ route('TMS.Task.Get.File.Name',['UniqId'=>\MS\Core\Helper\Comman::en4url($c),'TaskId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']),'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']),'TypeOfDocument'=>\MS\Core\Helper\Comman::en4url($docPath['TypeOfDocument']),'FileName'=>$docName]) }}" target="_BLANK">
-                 {{ explode('.',$docName)[0] }}
+<a class="btn btn-default" href="{{ route('TMS.Task.Get.File.Name',['UniqId'=>\MS\Core\Helper\Comman::en4url($c),'TaskId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']),'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']),'TypeOfDocument'=>\MS\Core\Helper\Comman::en4url($docPath['TypeOfDocument']),'FileName'=>$docName]) }}" target="_BLANK">
+                 <i class="fa fa-paperclip" style="padding-right:5px;" aria-hidden="true"></i> {{ explode('.',$docName)[0] }}
                </a>
                </td>
                @if(array_key_exists('DateOfDocument', $docPath) && ($docPath['DateOfDocument']!=null))
@@ -312,11 +312,25 @@
 
                     </div>
 
+
+
                   @endif
+
+                  <div class="btn btn-info ms-text-black ms-mod-btn" ms-live-link="{{  route('TMS.Task.Rise.Step.Query.View',['TaskId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']) ,'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']) ] ) }}">
+                  <i class="fa fa-eye"></i>
+                  View Records
+                </div>
 
                   </div>
 
                @else
+
+                     <?php  //dd($step) 
+
+                $step['DocumentQueryArray']=json_decode($step['DocumentQueryArray'],true);
+                $step['DocumentArray']=json_decode($step['DocumentArray'],true);
+
+                 ?>
 
                @if($step['DocumentUploaded'])
 
@@ -343,6 +357,14 @@
 
                 @else
 
+
+                 @if(count($step['DocumentQueryArray']) != count($step['DocumentArray']))
+                  <div class="btn btn-danger ms-text-white ms-mod-btn" ms-live-link="{{  route('TMS.Task.Rise.Step.Query',['UniqId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']) ,'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']) ] ) }}">
+                  <i class="fa fa-question"></i>
+                  Rise Query
+                </div>
+                 @endif
+
                
 
                 <div class="btn btn-warning ms-text-black ms-mod-btn" ms-live-link="{{  route('TMS.Task.Rise.Step.Query.View',['TaskId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']) ,'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']) ] ) }}">
@@ -354,12 +376,7 @@
                 @else
 
 
-                <?php  //dd($step) 
-
-                $step['DocumentQueryArray']=json_decode($step['DocumentQueryArray'],true);
-                $step['DocumentArray']=json_decode($step['DocumentArray'],true);
-
-                 ?>
+          
 
                  @if(count($step['DocumentQueryArray']) != count($step['DocumentArray']))
                   <div class="btn btn-danger ms-text-white ms-mod-btn" ms-live-link="{{  route('TMS.Task.Rise.Step.Query',['UniqId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']) ,'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']) ] ) }}">

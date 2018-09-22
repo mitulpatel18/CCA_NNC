@@ -63,7 +63,7 @@
               <tr>
                 
                 <th>Area of Piracy</th>
-                <td>: {{$data['task']['AreaPiracy']}}</td>
+                <td>: To be added </td>
 
               
               </tr>   
@@ -171,7 +171,7 @@
                   $c=\MS\Core\Helper\Comman::random(2);
                   array_splice($urlArray, 1, 0, $c);
                   $url=implode('/', $urlArray);
-                 // dd($docPath);  
+                // dd($docPath );  
 
                  //;
                  // if('Panchnma Copy_452'==explode('.',$docName)[0])dd($docPath);
@@ -179,6 +179,7 @@
                   
                   
                   <td>
+
 <a href="{{ route('ATMS.Task.Get.File.Name',['UniqId'=>\MS\Core\Helper\Comman::en4url($c),'TaskId'=>\MS\Core\Helper\Comman::en4url($data['task']['UniqId']),'StepId'=>\MS\Core\Helper\Comman::en4url($step['UniqId']),'TypeOfDocument'=>\MS\Core\Helper\Comman::en4url($docPath['TypeOfDocument']),'FileName'=>$docName]) }}" target="_BLANK">
                  {{ explode('.',$docName)[0] }}
                </a>
@@ -302,12 +303,61 @@
 
 
 
+               <?php 
 
-                 
-                <div class="btn btn-warning ms-text-black ">
+
+
+             $step['DocumentReplyArray']  =json_decode($step['DocumentReplyArray'],true);
+             $step['DocumentQueryArray']  =json_decode($step['DocumentQueryArray'],true);
+
+
+
+               ?>
+                          
+                        @if($step['DocumentReply'])
+
+                          <?php
+
+                         
+                           // dd($step['DocumentReplyArray']);
+                           ?>
+
+                        <div class="btn btn-info ms-text-black ">
+                          <i class="fa fa-eye"></i>
+                          View Query 
+                        </div>   
+
+                      
+                        @if(!$step['DocumentVerified'])
+
+
+                            <div class="btn btn-warning ms-text-black ">
+                            <i class="fa fa-refresh fa-spin fa-fw"></i>
+                            Waiting For Admin approval
+                          </div>
+                          @endif
+
+                @else
+
+
+
+                  <div class="btn btn-warning ms-text-black ">
                   <i class="fa fa-refresh fa-spin fa-fw"></i>
                   Waiting For Admin approval
                 </div>
+           
+
+                @endif
+
+
+
+
+                
+
+
+
+
+
 
               
 

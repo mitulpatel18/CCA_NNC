@@ -104,9 +104,11 @@ class Controller extends \App\Http\Controllers\Controller
 
 	    $status=200;
 
+	    return redirect()->action('\B\Panel\Controller@index');
+
 		$array=[
 	 		'msg'=>"Verify OTP",
-	 		'redirect'=>action('\B\Users\Controller@login_form_otp'),
+	 		'redirect'=>action('\B\Panel\Controller@index'),
 	 		// 	'db Password'=>$psw,
 	 		// 'in Password'=>$input['Password']
 	 		];

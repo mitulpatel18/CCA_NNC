@@ -66,7 +66,7 @@
 
 
 
-@if(!array_key_exists($docDetails['UniqId'],$data['stepData']['DocumentQueryArray']))
+@if(!array_key_exists($docDetails['UniqId'],$data['stepData']['DocumentQueryArray']) && !$data['stepData'] ['DocumentVerified'])
   <?php 
 
   //dd($docDetails);

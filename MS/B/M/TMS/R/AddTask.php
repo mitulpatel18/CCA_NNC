@@ -29,7 +29,10 @@ class AddTask extends FormRequest
             'HireAgencyCode'=>"required",
             'NameOperator'=>"required",
             'NameOwner'=>"required",
-            'AreaPiracy'=>"required",
+            'NameAreaPiracyCity'=>"required",
+            'NameAreaPiracyDistrict'=>"required",
+            'NameAreaPiracyState'=>"required",
+            'NameAreaPiracyPincode'=>"required",
             'IllegalTypeBroadcasting'=>"required",
             'StatusOperator'=>"required",
             'NameOfNetwork'=>"required",
@@ -37,7 +40,6 @@ class AddTask extends FormRequest
             'NameOperatorCity'=>"required",
             'NameOperatorDistrict'=>"required",
             'NameOperatorState'=>"required",
-
             'NameOperatorPincode'=>"required",
             'Status'=>"required",
 
@@ -65,14 +67,14 @@ public function messages()
     return [
 
         'HireAgencyCode.required'=>"Agency Code required Please fill agency code.",
-        'NameOperator.required'=>"Name of Operator is required Please fill Name of Operator.",
+      'NameOperator.required'=>"Name of Operator is required Please fill Name of Operator.",
         'NameOwner.required'=>"Name of Owner is required Please fill Name of Owner.",
-        'AreaPiracy.required'=>"Area of Piracy is required Please fill Area of Priacy.",
+      //  'AreaPiracy.required'=>"Area of Piracy is required Please fill Area of Priacy.",
         
         'IllegalTypeBroadcasting.required'=>"Illegal Type of Broacasting is required Please fill Illegal Broacasting.",
 
         'StatusOperator.required'=>"Status of Operator is required Please fill Status of Operator.",
-        'NameOfNetwork.required'=>"Name of Operator is required Please fill Name of Operator.",
+        'NameOfNetwork.required'=>"Name of LCO/MCO is required Please fill LCO/MCO.",
         'NameOperatorAddress1'=>"Address of Operator is required Please fill Address of Operator.",
         'NameOperatorCity.required'=>"City of Operator is required Please fill City located Operator's Headqurter.",
         'NameOperatorDistrict.required'=>"District of Operator is required Please fill District of Operator.",

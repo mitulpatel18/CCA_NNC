@@ -154,6 +154,8 @@ class Controller extends \App\Http\Controllers\Controller
 			$status=200;
 			$tableId=0;
 			$rData=$r->all();
+			
+			//dd($rData);
 			if(array_key_exists('ConfirmPassword', $rData))unset( $rData['ConfirmPassword']);
 			if(array_key_exists('Password', $rData))$rData['Password']=\MS\Core\Helper\Comman::en($rData['Password']);
 
@@ -164,9 +166,14 @@ class Controller extends \App\Http\Controllers\Controller
 
 
 
+				\B\ANMS\Base::migrate([ 
+					[
+					'id'=>1,
+					'code'=>$rData['UniqId']
+					]
+							]);
+	
 
-
-			
 
 
 			$array=[
@@ -219,11 +226,11 @@ class Controller extends \App\Http\Controllers\Controller
 
 						$link=[
 
-			// 'delete'=>[
-			// 	'method'=>'AMS.Agency.Delete.Id',
-			// 	'key'=>'UniqId',
+			'delete'=>[
+				'method'=>'AMS.Agency.Delete.Id',
+				'key'=>'UniqId',
 
-			// ],
+			],
 
 			'edit'=>[
 				'method'=>'AMS.Agency.Edit.Id',

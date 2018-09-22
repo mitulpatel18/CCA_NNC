@@ -29,9 +29,7 @@
                         </table>
 
 
-
-                   
-
+                        @include('AMS.V.Object.AgencyAssignTask',['data'=>['TaskId'=> $data['agency']['UniqId']]])
 
 
                 </div>
@@ -50,6 +48,9 @@
                              <!--  <div class="btn btn-danger ms-text-black ms-mod-btn ms-btn-confirm" ms-live-link="{{ route('AMS.Agency.Delete.Id',['UniqId'=>\MS\Core\Helper\Comman::en4url($data['agency']['UniqId'])]) }}"><i class="fa fa-trash"></i><br>Delete</div>
  -->
                             </div>
+
+
+
 
                 </div>
                 </div>

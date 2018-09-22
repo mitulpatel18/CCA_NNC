@@ -445,10 +445,7 @@ switch ($type) {
 
 		$cloumn[]='created_at';
 		$cloumn[]='updated_at';	
-		
-	//	dd($value);			
-		
-		
+
 
 		$data=[
 

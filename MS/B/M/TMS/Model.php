@@ -9,7 +9,8 @@ protected $connection;
 protected $fillable;
 protected $base_Field;
 
-    
+
+
 
     public function __construct($id=false,$code=false,$connection=false)
     {
